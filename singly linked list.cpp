@@ -196,12 +196,23 @@ void sort1(node *head)
         }
     }
 }
+void reverse(node *&head, node *cur)
+{
+    if (cur->next == NULL)
+    {
+        head = cur;
+        return;
+    }
+    reverse(head, cur->next);
+    cur->next->next = cur;
+    cur->next = NULL;
+}
 
 int main()
 {
     node *head=NULL;
     node *tail=NULL;
-    cout<<"1.insert head 2.insert tail 3.insert pos 4.delete head 5. delete tail 6. delete pos 7.print 8.print(recurssion) 9.print(recurssion&reverse) 10.sort linked list"<<endl;
+    cout<<"1.insert head 2.insert tail 3.insert pos 4.delete head 5. delete tail 6. delete pos 7.print 8.print(recurssion) 9.print(recurssion&reverse) 10.sort linked list 11.reverse list"<<endl;
     while(1)
     {
         cout<<endl<<"enter your choiec :";
@@ -262,6 +273,11 @@ int main()
         case 10:
         {
             sort1(head);
+        }
+        break;
+       case 11:
+        {
+            reverse(head,head);  
         }
         break;
         default:
