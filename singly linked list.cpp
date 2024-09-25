@@ -134,12 +134,24 @@ else{
     cout<<head->val<<" ";
 }
 }
+void sort1(node *head){
+    for (Node *i = head; i->next != NULL; i = i->next)
+    {
+        for (Node *j = i->next; j != NULL; j = j->next)
+        {
+            if (i->val < j->val)
+            {
+                swap(i->val, j->val);
+            }
+        }
+    }
+}
 
 int main()
 {
     node *head=NULL;
     node *tail=NULL;
-    cout<<"1.insert head 2.insert tail 3.insert pos 4.delete head 5. delete tail 6. delete pos 7.print 8.print(r) 9.print(r&re)"<<endl;
+    cout<<"1.insert head 2.insert tail 3.insert pos 4.delete head 5. delete tail 6. delete pos 7.print 8.print(recurssion) 9.print(recurssion&reverse) 10.sort linked list"<<endl;
     while(1)
     {
         cout<<endl<<"enter your choiec :";
@@ -196,6 +208,11 @@ delete3(head);
             {
              print3(head);
             }
+            break;
+            case 10:
+                {
+                  sort1(head);  
+                }
             break;
         default:
             cout<<"am i joking with you? (insert within range or get out of here) "<<endl;
