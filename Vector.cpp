@@ -1,8 +1,9 @@
+
 #include<bits/stdc++.h>
 using namespace std;
 void menu()
 {
-    cout<<"01.insert value \n02.erase value \n03.Print value \n04.clear list \n05.resize \n06.replace value \n07.size of list \n08.Sort element \n09.Reverse \n10.find element \n11.Insert multiple element \n12.erase multiple element \n13.Max element \n14.min element \n15.Upper bound \n16.Count occurrence \n17.Unique elements \n18.Print the list \n19.Print menu \n20.Lower bound \n21.End program "<<endl;
+    cout<<"01.insert value \n02.erase value \n03.Print value \n04.clear list \n05.resize \n06.replace index value \n07.size of list \n08.Sort element \n09.Reverse \n10.find element \n11.Insert multiple element \n12.erase multiple element \n13.Max element \n14.min element \n15.Upper bound \n16.Count occurrence \n17.Unique elements \n18.Print the list \n19.Print menu \n20.Lower bound \n21.Replace specific value \n22.End program "<<endl;
 }
 int main()
 {
@@ -344,26 +345,28 @@ int main()
         {
             if (!V.empty())
             {
-                double x;
-                cout<<"Enter value to find upper bound :";
-                cin>>x;
-                auto it = upper_bound(V.begin(), V.end(), x);
+                vector<double> V1 = V;
+                sort(V1.begin(), V1.end());
 
-                if (it != V.end())
+                double x;
+                cout << "Enter value to find upper bound: ";
+                cin >> x;
+
+                auto it = upper_bound(V1.begin(), V1.end(), x);
+
+                if (it != V1.end())
                 {
-                    cout << "Upper bound of " << x << " is  " << *it<<endl;
+                    cout << "Upper bound of " << x << " is " << *it << endl;
                 }
                 else
                 {
-                    cout << "Upper bound not found"<<endl;
+                    cout << "Upper bound not found" << endl;
                 }
             }
             else
             {
                 cout << "Vector is empty" << endl;
             }
-
-
 
         }
         break;
@@ -427,17 +430,21 @@ int main()
             if (!V.empty())
             {
                 double x;
-                cout<<"Enter value to find lower bound :";
-                cin>>x;
-                auto it = lower_bound(V.begin(), V.end(), x);
+                cout << "Enter value to find lower bound: ";
+                cin >> x;
 
-                if (it != V.end())
+                vector<double> V1 = V;
+                sort(V1.begin(), V1.end());
+
+                auto it = lower_bound(V1.begin(), V1.end(), x);
+
+                if (it != V1.end())
                 {
-                    cout << "Lower bound of " << x << " is "  << *it<<endl;
+                    cout << "Lower bound of " << x << " is " << *it << endl;
                 }
                 else
                 {
-                    cout << "Lower bound not found"<<endl;
+                    cout << "Lower bound not found" << endl;
                 }
             }
             else
@@ -445,9 +452,29 @@ int main()
                 cout << "Vector is empty" << endl;
             }
 
+
         }
         break;
         case 21:
+        {
+            if (!V.empty())
+            {
+                cout<<"Enter value you want replace :";
+                double old;
+                cin>>old;
+                cout<<"Enter new value to set :";
+                double newValue;
+                cin>>newValue;
+                replace(V.begin(),V.end(),old,newValue);
+                cout<<"All "<<old <<" are replaced by "<<newValue<<endl;
+            }
+            else
+            {
+                cout << "Vector is empty" << endl;
+            }
+        }
+        break;
+        case 22:
         {
             cout<<"The program is terminated "<<endl;
         }
@@ -459,5 +486,5 @@ int main()
 
 
     }
-    while(n!=21);
+    while(n!=22);
 }
