@@ -2,7 +2,7 @@
 using namespace std;
 void menu()
 {
-    cout<<"01.insert value \n02.erase value \n03.Print value \n04.clear list \n05.resize \n06.replace value \n07.size of list \n08.Sort element \n09.Reverse \n10.find element \n11.Insert multiple element \n12.erase multiple element \n13.Max element \n14.min element \n15.Capacity \n16.Count occurrence \n17.Unique elements \n18.Print the list \n19.Print menu \n20.End program "<<endl;
+    cout<<"01.insert value \n02.erase value \n03.Print value \n04.clear list \n05.resize \n06.replace value \n07.size of list \n08.Sort element \n09.Reverse \n10.find element \n11.Insert multiple element \n12.erase multiple element \n13.Max element \n14.min element \n15.Upper bound \n16.Count occurrence \n17.Unique elements \n18.Print the list \n19.Print menu \n20.Lower bound \n21.End program "<<endl;
 }
 int main()
 {
@@ -214,7 +214,7 @@ int main()
 
             /*
             //another way
-            int val;
+            double val;
             cin >> val;
             int found = -1;
             for (int i = 0; i < V.size(); i++) {
@@ -235,7 +235,7 @@ int main()
             cout << "Enter number of elements you want to insert: ";
             int n;
             cin >> n;
-            vector<int> newValues(n);
+            vector<double> newValues(n);
             cout << "Enter values: ";
             for (int i = 0; i < n; i++)
             {
@@ -258,7 +258,7 @@ int main()
             cout << "Enter number of elements you want to insert: ";
             int n;
             cin >> n;
-            int arr[n];
+            double arr[n];
             cout << "Enter values: ";
             for (int i = 0; i < n; i++)
             {
@@ -342,20 +342,42 @@ int main()
 
         case 15:
         {
-           cout<<"Current capacity of list is :"<<V.capacity()<<endl;
+            if (!V.empty())
+            {
+                double x;
+                cout<<"Enter value to find upper bound :";
+                cin>>x;
+                auto it = upper_bound(V.begin(), V.end(), x);
+
+                if (it != V.end())
+                {
+                    cout << "Upper bound of " << x << " is  " << *it<<endl;
+                }
+                else
+                {
+                    cout << "Upper bound not found"<<endl;
+                }
+            }
+            else
+            {
+                cout << "Vector is empty" << endl;
+            }
+
+
+
         }
         break;
 
         case 16:
         {
 
- if (V.empty())
+            if (V.empty())
             {
                 cout << "List is empty" << endl;
                 break;
             }
             cout << "Enter value to count occurrences: ";
-            int val;
+            double val;
             cin >> val;
             int count1 = count(V.begin(), V.end(), val);
             cout << "Occurrences of " << val << ": " << count1 << endl;
@@ -402,9 +424,33 @@ int main()
         break;
         case 20:
         {
-            cout<<"Program is terminated"<<endl;
+            if (!V.empty())
+            {
+                double x;
+                cout<<"Enter value to find lower bound :";
+                cin>>x;
+                auto it = lower_bound(V.begin(), V.end(), x);
+
+                if (it != V.end())
+                {
+                    cout << "Lower bound of " << x << " is "  << *it<<endl;
+                }
+                else
+                {
+                    cout << "Lower bound not found"<<endl;
+                }
+            }
+            else
+            {
+                cout << "Vector is empty" << endl;
+            }
+
         }
         break;
+        case 21:
+        {
+            cout<<"The program is terminated "<<endl;
+        }
         default:
         {
             cout<<"Invalid input"<<endl;
@@ -413,5 +459,5 @@ int main()
 
 
     }
-    while(n!=20);
+    while(n!=21);
 }
